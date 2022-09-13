@@ -6,7 +6,7 @@ public class ZoomBlurRenderFeature : ScriptableRendererFeature
 {
     class ZoomBlurRenderPass : ScriptableRenderPass
     {
-        private static readonly string _ZoomBlurRT = "Render ZoomBlur Effects";
+        private static readonly string _ZoomBlurCmdName = "Render ZoomBlur Effects";
         
         #region ShaderId
  
@@ -91,7 +91,7 @@ public class ZoomBlurRenderFeature : ScriptableRendererFeature
             }
             #endregion
 
-            var cmd = CommandBufferPool.Get(_ZoomBlurRT);
+            var cmd = CommandBufferPool.Get(_ZoomBlurCmdName);
             Render(cmd, ref renderingData);
             context.ExecuteCommandBuffer(cmd);
             CommandBufferPool.Release(cmd);

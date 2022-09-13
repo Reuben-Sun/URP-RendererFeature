@@ -8,7 +8,7 @@ public class UVOffsetRenderFeature : ScriptableRendererFeature
 {
     class UVOffsetRenderPass : ScriptableRenderPass
     {
-        private static readonly string _UVOffsetRT = "Render UV Offset";
+        private static readonly string _UVOffsetCmdName = "Render UV Offset";
         
         #region ShaderId
 
@@ -84,7 +84,7 @@ public class UVOffsetRenderFeature : ScriptableRendererFeature
             }
             #endregion
 
-            var cmd = CommandBufferPool.Get(_UVOffsetRT);
+            var cmd = CommandBufferPool.Get(_UVOffsetCmdName);
             Render(cmd, ref renderingData);
             context.ExecuteCommandBuffer(cmd);
             CommandBufferPool.Release(cmd);
